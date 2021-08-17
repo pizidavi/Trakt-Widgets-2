@@ -1,0 +1,6 @@
+
+{% if data.element.type == "show" %}
+  {{ data.element.title }}<tspan dx="7">{{ data.element.season }}x{{ data.element.episode }}</tspan>
+{% elif element.type == "movie" %}
+  {{ data.element.title }}<tspan dx="7">{{ data.element.year }}</tspan>
+{% endif %}

@@ -1,0 +1,31 @@
+{
+	"HOME_PAGE": "Home page",
+
+  "MOVIE": {
+    "one": "movie",
+    "other": "movies"
+  },
+  "EPISODE": {
+    "one": "episode",
+    "other": "episodes"
+  },
+  "PRIVATE": "private",
+  "VIP": "vip",
+  "LAST_WATCHED": "last watched",
+  "IS_WATCHING": "is watching",
+
+  "view.NO_IMAGE": "No image",
+  "view.IMAGE_PREVIEW": "Image preview",
+
+  "date.D": "D",
+  "date.H": "H",
+  "date.M": "M",
+
+	"error.LANGUAGE_NOT_FOUND": "Language not found",
+	"error.LAYOUT_NOT_FOUND": "Layout not found",
+	"error.VIEW_NOT_FOUND": "View not found",
+	"error.VIEW_NOT_COMPATIBLE": "\"%s\" layout works only with \"%s\" view",
+	"error.PAGE_NOT_FOUND": "Page not found",
+  "error.UNEXPECTED_ERROR": "Unexpected error",
+  "error.ERROR": "Error"
+}

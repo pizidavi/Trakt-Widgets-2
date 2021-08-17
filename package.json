@@ -1,0 +1,29 @@
+{
+  "name": "trakt-widgets",
+  "version": "1.0.0",
+  "description": "Trakt Widgets for free users!",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "test": "nodemon app.js"
+  },
+  "author": "pizidavi",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.3.0",
+    "fanart.tv": "^2.1.0",
+    "http-errors": "^1.8.0",
+    "i18n": "^0.13.3",
+    "node-base64-image": "^2.0.3",
+    "nunjucks": "^3.2.3",
+    "tmdbapi": "^1.1.1",
+    "trakt.tv": "^8.0.0",
+    "trakt.tv-cached": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

@@ -1,0 +1,11 @@
+{% extends "layouts/svg.njk" %}
+
+{% set width = 720 %}
+{% set height = 461 %}
+
+{% block body %}
+
+<text x="50%" y="45%" fill="#262626" font-size="30" dominant-baseline="middle" text-anchor="middle">{{ error.status }}</text>
+<text x="50%" y="50%" fill="#262626" font-size="22" dominant-baseline="middle" text-anchor="middle">{{ error.message }}</text>
+
+{% endblock %}

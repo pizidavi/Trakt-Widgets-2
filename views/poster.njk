@@ -1,0 +1,34 @@
+{% extends "layouts/svg.njk" %}
+
+{% set title = "profile" %}
+{% set width = 440 %}
+{% set height = 720 %}
+
+{% block body %}
+
+  <!-- Sfondo -->
+  <rect id="sfondo" x="0" y="0" width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Image -->
+  <g id="image">
+    <rect x="0" y="0" width="100%" height="90%" fill="#f2f2f2" />
+    <text x="50%" y="50%" fill="#bfbfbf" font-size="22" dominant-baseline="middle" text-anchor="middle">{{ __('view.NO_IMAGE') | capitalize }}</text>
+    <image x="0" y="0" height="90%" xlink:href="{{ data.image }}" />
+  </g>
+
+  <!-- Text -->
+  <g id="text">
+    <rect x="0" y="90%" width="100%" height="10%" fill="#1c1c1c" />
+
+    <rect x="0" y="90%" width="15%" height="10%" fill="#737373" />
+    <image x="1.5%" y="91.45%" width="12%" xlink:href="{{ variables.trakt_icon_white }}" />
+
+    <text x="18%" y="93.9%" fill="#bfbfbf" font-size="14" dominant-baseline="bottom" text-anchor="left">
+      {{ data.username | upper }} {{ __( 'LAST_WATCHED' if layout == "watched" else 'IS_WATCHING' ) | upper }}
+    </text>
+    <text x="18%" y="97.5%" fill="#e6e6e6" font-size="22" dominant-baseline="bottom" text-anchor="left">
+      {% include "partials/text.njk" %}
+    </text>
+  </g>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{
+	"HOME_PAGE": "Pagina principale",
+	"MOVIE": {
+		"one": "film",
+		"other": "film"
+	},
+	"EPISODE": {
+		"one": "episodio",
+		"other": "episodi"
+	},
+	"PRIVATE": "privato",
+	"VIP": "vip",
+	"LAST_WATCHED": "ultimo guardato",
+	"IS_WATCHING": "sta guardando",
+	"view.NO_IMAGE": "nessuna immagine",
+	"view.IMAGE_PREVIEW": "Preview immagine",
+	"date.D": "G",
+	"date.H": "O",
+	"date.M": "M",
+	"error.LANGUAGE_NOT_FOUND": "Lingua non disponibile",
+	"error.LAYOUT_NOT_FOUND": "Layout non disponibile",
+	"error.VIEW_NOT_FOUND": "View non disponibile",
+	"error.VIEW_NOT_COMPATIBLE": "\"%s\" layout disponibile solo con \"%s\" view",
+	"error.PAGE_NOT_FOUND": "Pagina non trovata",
+  "error.UNEXPECTED_ERROR": "Errore inaspettato",
+	"error.ERROR": "Errore"
+}

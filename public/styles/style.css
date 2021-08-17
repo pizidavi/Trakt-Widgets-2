@@ -1,0 +1,19 @@
+/* Style */
+
+.github-fork-ribbon:before {
+  background-color: #333;
+}
+
+table {}
+
+  table th,
+  table td {
+    text-align: center;
+  }
+
+  table th:first-child,
+  table td:first-child,
+  table th:last-child,
+  table td:last-child {
+    text-align: left;
+  }

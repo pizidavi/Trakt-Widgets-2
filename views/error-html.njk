@@ -1,0 +1,25 @@
+{% extends "layouts/default.njk" %}
+
+{% block body %}
+
+<div class="container text-center my-4">
+  <h1>{{ __('error.ERROR') }}</h1>
+  <code style="font-size:1.5em;">{{ error.message }}</code>
+
+  <div class="mt-4">
+    <h5>{{ __('view.IMAGE_PREVIEW') }}:</h5>
+    <img id="preview" class="img-fluid mx-auto d-block" src="#" alt="Image preview" />
+
+    <p class="mt-4">
+      <a href="/">{{ __('HOME_PAGE') }}</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+  document.querySelector('#preview').src = location.pathname;
+  {# document.querySelector('#preview').setAttribute('src', location.pathname); #}
+</script>
+
+{% endblock %}
