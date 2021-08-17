@@ -20,8 +20,7 @@
     "node-base64-image": "^2.0.3",
     "nunjucks": "^3.2.3",
     "tmdbapi": "^1.1.1",
-    "trakt.tv": "^8.0.0",
-    "trakt.tv-cached": "^3.0.1"
+    "trakt.tv": "^8.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

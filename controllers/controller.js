@@ -6,12 +6,12 @@ const createError = require('http-errors');
 const trakt = new Trakt({
   client_id: process.env.TRAKT_CLIENT_ID,
   plugins: {
-    cached: require('trakt.tv-cached')
+    //cached: require('trakt.tv-cached')
   },
   options: {
-    cached: {
+    /*cached: {
       defaultTTL: 30
-    }
+    }*/
   }
 });
 
@@ -19,7 +19,7 @@ const trakt = new Trakt({
 const profile = async (req, next, view) => {
   const { slug } = req.params;
 
-  return await trakt.cached.users.profile({
+  return await trakt/*.cached*/.users.profile({
     username: slug,
     extended: 'full'
   }).then(async (response) => {
@@ -42,10 +42,10 @@ const profile = async (req, next, view) => {
       user.avatar = await Image.to_base64(response.images.avatar.full);
 
     return await Promise.allSettled([
-      trakt.cached.users.stats({
+      trakt/*.cached*/.users.stats({
         username: slug
       }),
-      trakt.cached.users.history({
+      trakt/*.cached*/.users.history({
         username: slug
       })
     ]).then(async (values) => {
@@ -86,7 +86,7 @@ const profile = async (req, next, view) => {
 const watched = async (req, next, view) => {
   const { slug } = req.params;
 
-  return await trakt.cached.users.history({
+  return await trakt/*.cached*/.users.history({
     username: slug
   }).then(async (response) => {
     if (!response.length)
@@ -131,7 +131,7 @@ const watched = async (req, next, view) => {
 const watching = async (req, next, view) => {
   const { slug } = req.params;
 
-  return await trakt.cached.users.watching({
+  return await trakt/*.cached*/.users.watching({
     username: slug
   }).then(async (response) => {
     if (!response)
