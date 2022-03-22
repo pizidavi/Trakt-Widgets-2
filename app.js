@@ -43,16 +43,16 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   err.status = err.status || 500;
-  err.message = err.message || 'Internal error';
+  err.message = err.message || res.__('error.INTERNAL_ERROR');
 
   res.status(err.status);
   res.format({
     html: () => {
-      res.render('error-html', { title: err.status, error: err });
+      res.render('viewer', { title: err.status, error: err });
     },
     'image/*': () => {
       res.set('Content-Type', 'image/svg+xml');
-      res.render('error-svg', { title: err.status, error: err });
+      res.render('error', { title: err.status, error: err });
     },
     default: () => {
       res.send(`${err.status} | ${err.message}`)

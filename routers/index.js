@@ -13,6 +13,7 @@ router.get('/:slug/:layout/:view?', async (req, res, next) => {
   const layouts = [ 'profile', 'watched', 'watching' ];
   const views = [ 'poster', 'card', 'banner', 'fanart', 'text' ];
 
+  const slug = req.params.slug;
   const layout = req.params.layout;
   const view = req.params.view || 'poster';
 
@@ -24,17 +25,22 @@ router.get('/:slug/:layout/:view?', async (req, res, next) => {
   if (layout == 'profile' && view != 'poster')
     return next(createError(400, res.__('error.VIEW_NOT_COMPATIBLE', 'profile', 'poster')));
 
-  res.set('Cache-Control', 'no-cache');
-  res.set('Content-Type', 'image/svg+xml');
-  const data = await controller[layout](req, next, view);
-  if (data)
-    if (layout == 'profile')
-      res.render(`${view}-${layout}`, data);
-    else
-      res.render(`${view}`, {
-        'layout': layout,
-        'data': data
-      });
+  res.format({
+    html: () => {
+      res.render('viewer', { title: layout, slug: slug });
+    },
+    'image/*': async () => {
+      const data = await controller[layout](req, next, view);
+      if (data) {
+        res.set('Cache-Control', 'no-cache');
+        res.set('Content-Type', 'image/svg+xml');
+        res.render(`${view}` + (layout == 'profile' ? `-${layout}` : ''), {
+          'layout': layout,
+          'data': data
+        });
+      }
+    }
+  });
 });
 
 

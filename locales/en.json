@@ -15,7 +15,7 @@
   "IS_WATCHING": "is watching",
 
   "view.NO_IMAGE": "No image",
-  "view.IMAGE_PREVIEW": "Image preview",
+  "view.PREVIEW": "Preview",
 
   "date.D": "D",
   "date.H": "H",
@@ -27,5 +27,6 @@
 	"error.VIEW_NOT_COMPATIBLE": "\"%s\" layout works only with \"%s\" view",
 	"error.PAGE_NOT_FOUND": "Page not found",
   "error.UNEXPECTED_ERROR": "Unexpected error",
+  "error.INTERNAL_ERROR": "Internal Error",
   "error.ERROR": "Error"
 }

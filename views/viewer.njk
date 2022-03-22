@@ -1,0 +1,34 @@
+{% extends "layouts/default.njk" %}
+
+{% set title = slug %}
+
+{% block body %}
+
+<div class="container text-center my-4">
+  {% if not error %}
+    <h1>{{ __('view.PREVIEW') }}</h1>
+    <code style="font-size:1em;">&lt;img src="{href}" alt="trakt-widget" /&gt;</code>
+  {% else %}
+    <h1>{{ __('error.ERROR') }}</h1>
+    <code style="font-size:1em;">{{ error.message }}</code>
+  {% endif %}
+
+  <div class="mt-4">
+    <img id="preview" class="img-fluid mx-auto d-block" src="#" alt="Image preview" />
+
+    <p class="mt-4">
+      <a href="/">{{ __('HOME_PAGE') }}</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+  document.querySelector('#preview').src = location.pathname;
+  {% if not error %}
+  const text = document.querySelector('code').textContent
+  document.querySelector('code').textContent = text.replace('{href}', location.href);
+  {% endif %}
+</script>
+
+{% endblock %}

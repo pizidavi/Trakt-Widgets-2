@@ -1,25 +1,18 @@
 require('dotenv').config();
 const Trakt = require('trakt.tv');
-const Image = require('../utils/image');
 const createError = require('http-errors');
+
+const Image = require('../utils/image');
 
 const trakt = new Trakt({
   client_id: process.env.TRAKT_CLIENT_ID,
-  plugins: {
-    //cached: require('trakt.tv-cached')
-  },
-  options: {
-    /*cached: {
-      defaultTTL: 30
-    }*/
-  }
 });
 
 
 const profile = async (req, next, view) => {
   const { slug } = req.params;
 
-  return await trakt/*.cached*/.users.profile({
+  return await trakt.users.profile({
     username: slug,
     extended: 'full'
   }).then(async (response) => {
@@ -42,10 +35,10 @@ const profile = async (req, next, view) => {
       user.avatar = await Image.to_base64(response.images.avatar.full);
 
     return await Promise.allSettled([
-      trakt/*.cached*/.users.stats({
+      trakt.users.stats({
         username: slug
       }),
-      trakt/*.cached*/.users.history({
+      trakt.users.history({
         username: slug
       })
     ]).then(async (values) => {
@@ -55,8 +48,8 @@ const profile = async (req, next, view) => {
       if (stats.status === 'fulfilled' && history.status === 'fulfilled') {
         stats = stats.value;
         history = history.value;
-        let image = null;
 
+        let image = null;
         if (history.length) {
           const element = history[0];
           const type = (element.type == 'movie' ? 'movie' : 'show');
@@ -76,9 +69,9 @@ const profile = async (req, next, view) => {
         };
       }
       else if (stats.status !== 'fulfilled')
-        return next(stats.reason)
+        return next(createError(400, stats.reason))
       else if (history.status !== 'fulfilled')
-        return next(history.reason)
+        return next(createError(400, history.reason))
     });
   }).catch(next);
 };
@@ -86,7 +79,7 @@ const profile = async (req, next, view) => {
 const watched = async (req, next, view) => {
   const { slug } = req.params;
 
-  return await trakt/*.cached*/.users.history({
+  return await trakt.users.history({
     username: slug
   }).then(async (response) => {
     if (!response.length)
@@ -110,11 +103,13 @@ const watched = async (req, next, view) => {
       data['episode'] = element.episode.number;
     }
 
-    const image = await Image.get(view, {
-      tmdb_id: tmdb,
-      tvdb_id: tvdb,
-      type: type
-    });
+    let image = null;
+    if (view != 'text')
+      image = await Image.get(view, {
+        tmdb_id: tmdb,
+        tvdb_id: tvdb,
+        type: type
+      });
 
     return {
       'username': slug,
@@ -131,7 +126,7 @@ const watched = async (req, next, view) => {
 const watching = async (req, next, view) => {
   const { slug } = req.params;
 
-  return await trakt/*.cached*/.users.watching({
+  return await trakt.users.watching({
     username: slug
   }).then(async (response) => {
     if (!response)
@@ -155,11 +150,13 @@ const watching = async (req, next, view) => {
       data['episode'] = element.episode.number;
     }
 
-    const image = await Image.get(view, {
-      tmdb_id: tmdb,
-      tvdb_id: tvdb,
-      type: type
-    });
+    let image = null;
+    if (view != 'text')
+      image = await Image.get(view, {
+        tmdb_id: tmdb,
+        tvdb_id: tvdb,
+        type: type
+      });
 
     return {
       'username': slug,

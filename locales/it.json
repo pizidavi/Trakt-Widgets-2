@@ -13,7 +13,7 @@
 	"LAST_WATCHED": "ultimo guardato",
 	"IS_WATCHING": "sta guardando",
 	"view.NO_IMAGE": "nessuna immagine",
-	"view.IMAGE_PREVIEW": "Preview immagine",
+	"view.PREVIEW": "Preview",
 	"date.D": "G",
 	"date.H": "O",
 	"date.M": "M",
@@ -23,5 +23,6 @@
 	"error.VIEW_NOT_COMPATIBLE": "\"%s\" layout disponibile solo con \"%s\" view",
 	"error.PAGE_NOT_FOUND": "Pagina non trovata",
   "error.UNEXPECTED_ERROR": "Errore inaspettato",
+	"error.INTERNAL_ERROR": "Errore interno",
 	"error.ERROR": "Errore"
 }
