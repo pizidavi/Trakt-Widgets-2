@@ -53,10 +53,11 @@ const profile = async (req, next, view) => {
         if (history.length) {
           const element = history[0];
           const type = (element.type == 'movie' ? 'movie' : 'show');
-          const { tmdb, tvdb } = element[type].ids;
+          const { tmdb, imdb, tvdb } = element[type].ids;
 
           image = await Image.get('card', {
             tmdb_id: tmdb,
+            imdb_id: imdb,
             tvdb_id: tvdb,
             type: type
           });
@@ -91,7 +92,7 @@ const watched = async (req, next, view) => {
 
     const element = response[0];
     const type = (element.type == 'movie' ? 'movie' : 'show');
-    const { tmdb, tvdb } = element[type].ids;
+    const { tmdb, imdb, tvdb } = element[type].ids;
 
     const data = {
       'type': type,
@@ -107,6 +108,7 @@ const watched = async (req, next, view) => {
     if (view != 'text')
       image = await Image.get(view, {
         tmdb_id: tmdb,
+        imdb_id: imdb,
         tvdb_id: tvdb,
         type: type
       });
@@ -138,7 +140,7 @@ const watching = async (req, next, view) => {
 
     const element = response;
     const type = (element.type == 'movie' ? 'movie' : 'show');
-    const { tmdb, tvdb } = element[type].ids;
+    const { tmdb, imdb, tvdb } = element[type].ids;
 
     const data = {
       'type': type,
@@ -154,6 +156,7 @@ const watching = async (req, next, view) => {
     if (view != 'text')
       image = await Image.get(view, {
         tmdb_id: tmdb,
+        imdb_id: imdb,
         tvdb_id: tvdb,
         type: type
       });

@@ -33,21 +33,14 @@ const get = async (view, obj) => {
     case 'banner':
       type = obj.type;
       try {
-        images = await Fanart[type + 's'].get(obj.tvdb_id);
+        images = await Fanart[type + 's'].get(obj.tvdb_id || obj.imdb_id);
+
         const _type = (type == 'show' ? 'tv' : 'movie');
-        if (view == 'fanart') {
-          if (images[type + 'background'])
-            image = images[type + 'background'].length ? images[type + 'background'][0].url : null;
-          if (!image && images[_type + 'thumb'])
-            image = images[_type + 'thumb'].length ? images[_type + 'thumb'][0].url : null;
-        }
-        else {
-          if (images[_type + 'banner'])
-            image = images[_type + 'banner'].length ? images[_type + 'banner'][0].url : null;
-        }
-      } catch (error) {
-        images = '';
-      }
+        if (view == 'fanart')
+          image =  images[type + 'background'][0]?.url || images[_type + 'thumb'][0]?.url;
+        else
+          image = images[_type + 'banner'][0]?.url;
+      } catch (error) { }
       break;
   }
 
