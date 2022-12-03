@@ -3,13 +3,16 @@
   "version": "2.0.0",
   "description": "Trakt Widgets for free users!",
   "main": "app.js",
-  "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "start": "node app.js",
-    "test": "nodemon app.js"
+    "start:dev": "nodemon app.js"
   },
   "author": "pizidavi",
   "license": "MIT",
+  "homepage": "https://github.com/pizidavi/Trakt-Widgets-2",
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",

@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const createError = require('http-errors');
 const nunjucks = require('nunjucks');
@@ -9,14 +10,15 @@ const routers = require('./routers/index');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const env = nunjucks.configure('views', {
+const env = nunjucks.configure(path.resolve(__dirname, 'views'), {
   autoescape: true,
   express: app,
-  watch: false
+  watch: process.env.NODE_ENV === 'development'
 });
 
 i18n.configure({
   locales: ['en', 'it'],
+  localePath: path.resolve('./locales'),
   defaultLocale: 'en',
   retryInDefaultLocale: true,
   queryParameter: 'language',
@@ -64,3 +66,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`App running on PORT ${PORT}`);
 });
+
+module.exports = app;
