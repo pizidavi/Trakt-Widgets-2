@@ -5,7 +5,7 @@ Trakt Widgets for everyone!
 
 ## Usage
 
-Add _image_ in your HTML with url: [https://trakt-widgets.herokuapp.com/slug/layout/view?language=en](https://trakt-widgets.herokuapp.com/slug/layout/view?language=en)  
+Add _image_ in your HTML with url: [https://trakt-widgets.vercel.app/slug/layout/view?language=en](https://trakt-widgets.vercel.app/slug/layout/view?language=en)  
 
 ### Params
 
@@ -23,7 +23,7 @@ Add _image_ in your HTML with url: [https://trakt-widgets.herokuapp.com/slug/lay
 
 _Example:_ 
 ``` html
-<img src="https://trakt-widgets.herokuapp.com/pizidavi/profile/poster?language=en" alt="trakt-widget"/>
+<img src="https://trakt-widgets.vercel.app/pizidavi/profile/poster?language=en" alt="trakt-widget"/>
 ```  
 
 ### Layouts
@@ -50,31 +50,31 @@ Possible values: `poster` - `card` - `banner` - `fanart` - `text`
 
 | Profile | Watched | Watching |
 | :---: | :---: | :---: |
-| ![profile](https://trakt-widgets.herokuapp.com/pizidavi/profile/poster) | ![watched](https://trakt-widgets.herokuapp.com/pizidavi/watched/poster) | ![watching](https://trakt-widgets.herokuapp.com/pizidavi/watching/poster) |
+| ![profile](https://trakt-widgets.vercel.app/pizidavi/profile/poster) | ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/poster) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/poster) |
 
 ### Card
 
 | Watched | Watching |
 | :---: | :---: |
-| ![watched](https://trakt-widgets.herokuapp.com/pizidavi/watched/card) | ![watching](https://trakt-widgets.herokuapp.com/pizidavi/watching/card) |
+| ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/card) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/card) |
 
 ### Banner
 
 | Watched | Watching |
 | :---: | :---: |
-| ![watched](https://trakt-widgets.herokuapp.com/pizidavi/watched/banner) | ![watching](https://trakt-widgets.herokuapp.com/pizidavi/watching/banner) |
+| ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/banner) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/banner) |
 
 ### FanArt
 
 | Watched | Watching |
 | :---: | :---: |
-| ![watched](https://trakt-widgets.herokuapp.com/pizidavi/watched/fanart) | ![watching](https://trakt-widgets.herokuapp.com/pizidavi/watching/fanart) |
+| ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/fanart) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/fanart) |
 
 ### Text
 
 | Watched | Watching |
 | :---: | :---: |
-| ![watched](https://trakt-widgets.herokuapp.com/pizidavi/watched/text) | ![watching](https://trakt-widgets.herokuapp.com/pizidavi/watching/text) |
+| ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/text) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/text) |
 
 ---
 
