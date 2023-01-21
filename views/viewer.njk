@@ -24,7 +24,7 @@
 </div>
 
 <script>
-  document.querySelector('#preview').src = location.pathname;
+  document.querySelector('#preview').src = location.pathname + location.search;
   {% if not error %}
   const text = document.querySelector('code').textContent
   document.querySelector('code').textContent = text.replace('{href}', location.href);

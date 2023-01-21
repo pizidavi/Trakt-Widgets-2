@@ -4,51 +4,52 @@ const Tmdb = new (require('tmdbapi'))({
 const Fanart = new(require('fanart.tv'))(process.env.FANART);
 const base64 = require('node-base64-image');
 
+const tmdbBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
 const to_base64 = async (uri) => {
   return 'data:image/;base64,' + await base64.encode(uri, { string: true });
 };
 
-const get = async (view, obj) => {
-  let image = null;
-  let images, type;
+const get = async (view, options) => {
+  if (view === 'poster' || view === 'card') { // tmdb
+    const type = options.type == 'show' ? 'tv' : options.type;
+    const images = await Tmdb[type].images({
+      movie_id: options.tmdb_id,
+      tv_id: options.tmdb_id
+    });
 
-  switch (view) {
-    case 'poster':
-    case 'card':
-      type = obj.type == 'show' ? 'tv' : obj.type;
-      images = await Tmdb[type].images({
-        movie_id: obj.tmdb_id,
-        tv_id: obj.tmdb_id
-      });
+    const filterImages = images[view === 'poster' ? 'posters' : 'backdrops'];
+    if (!filterImages.length)
+      return null;
 
-      const base_url = 'https://image.tmdb.org/t/p/w500';
-      if (view == 'poster')
-        image = images.posters.length ? base_url + images.posters[0].file_path : null;
-      else
-        image = images.backdrops.length ? base_url + images.backdrops[0].file_path : null;
-      break;
-
-    case 'fanart':
-    case 'banner':
-      type = obj.type;
-      try {
-        images = await Fanart[type + 's'].get(obj.tvdb_id || obj.imdb_id);
-
-        const _type = (type == 'show' ? 'tv' : 'movie');
-        if (view == 'fanart')
-          image =  images[type + 'background'][0]?.url || images[_type + 'thumb'][0]?.url;
-        else
-          image = images[_type + 'banner'][0]?.url;
-      } catch (error) { }
-      break;
+    for (const key in filterImages) {
+      const element = filterImages[key];
+      if (element.iso_639_1 === options.language)
+        return await to_base64(tmdbBaseUrl + element.file_path);
+    }
+    return await to_base64(tmdbBaseUrl + filterImages[0].file_path);
   }
+  else if (view === 'fanart' || view === 'banner') { // fanart
+    const type = options.type == 'show' ? 'tv' : 'movie';
 
-  if (image)
-    return await to_base64(image);
-  return image;
+    try {
+      const images = await Fanart[`${options.type}s`].get(options.tvdb_id || options.imdb_id);
+
+      const filterImages = images[view === 'fanart' ? `${options.type}background` : `${type}banner`];
+      if (!filterImages.length)
+        return null;
+
+      for (const key in filterImages) {
+        const element = filterImages[key];
+        if (element.lang === options.language)
+          return await to_base64(element.url);
+      }
+      return await to_base64(filterImages[0].url);
+
+    } catch (error) { }
+    return null;
+  }
 };
-
 
 module.exports = {
   get,

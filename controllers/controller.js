@@ -9,7 +9,7 @@ const trakt = new Trakt({
 });
 
 
-const profile = async (req, next, view) => {
+const profile = async (req, next, view, language) => {
   const { slug } = req.params;
 
   return await trakt.users.profile({
@@ -59,7 +59,8 @@ const profile = async (req, next, view) => {
             tmdb_id: tmdb,
             imdb_id: imdb,
             tvdb_id: tvdb,
-            type: type
+            type: type,
+            language
           });
         }
 
@@ -77,7 +78,7 @@ const profile = async (req, next, view) => {
   }).catch(next);
 };
 
-const watched = async (req, next, view) => {
+const watched = async (req, next, view, language) => {
   const { slug } = req.params;
 
   return await trakt.users.history({
@@ -110,7 +111,8 @@ const watched = async (req, next, view) => {
         tmdb_id: tmdb,
         imdb_id: imdb,
         tvdb_id: tvdb,
-        type: type
+        type: type,
+        language
       });
 
     return {
@@ -125,7 +127,7 @@ const watched = async (req, next, view) => {
   });
 };
 
-const watching = async (req, next, view) => {
+const watching = async (req, next, view, language) => {
   const { slug } = req.params;
 
   return await trakt.users.watching({
@@ -158,7 +160,8 @@ const watching = async (req, next, view) => {
         tmdb_id: tmdb,
         imdb_id: imdb,
         tvdb_id: tvdb,
-        type: type
+        type: type,
+        language
       });
 
     return {

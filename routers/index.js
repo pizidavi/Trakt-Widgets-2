@@ -16,6 +16,7 @@ router.get('/:slug/:layout/:view?', async (req, res, next) => {
   const slug = req.params.slug;
   const layout = req.params.layout;
   const view = req.params.view || 'poster';
+  const language = req.locale;
 
   if (layouts.indexOf(layout) < 0)
     return next(createError(400, res.__('error.LAYOUT_NOT_FOUND')));
@@ -30,7 +31,7 @@ router.get('/:slug/:layout/:view?', async (req, res, next) => {
       res.render('viewer', { title: layout, slug: slug });
     },
     'image/*': async () => {
-      const data = await controller[layout](req, next, view);
+      const data = await controller[layout](req, next, view, language);
       if (data) {
         res.set('Cache-Control', 'no-cache');
         res.set('Content-Type', 'image/svg+xml');
