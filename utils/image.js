@@ -22,12 +22,15 @@ const get = async (view, options) => {
     if (!filterImages.length)
       return null;
 
+    let imageEng;
     for (const key in filterImages) {
       const element = filterImages[key];
       if (element.iso_639_1 === options.language)
         return await to_base64(tmdbBaseUrl + element.file_path);
+      if (element.iso_639_1 === 'en' && !imageEng)
+        imageEng = element.file_path;
     }
-    return await to_base64(tmdbBaseUrl + filterImages[0].file_path);
+    return await to_base64(tmdbBaseUrl + (imageEng || filterImages[0].file_path));
   }
   else if (view === 'fanart' || view === 'banner') { // fanart
     const type = options.type == 'show' ? 'tv' : 'movie';
@@ -39,12 +42,15 @@ const get = async (view, options) => {
       if (!filterImages.length)
         return null;
 
+      let imageEng;
       for (const key in filterImages) {
         const element = filterImages[key];
         if (element.lang === options.language)
           return await to_base64(element.url);
+        if (element.lang === 'en' && !imageEng)
+          imageEng = element.url;
       }
-      return await to_base64(filterImages[0].url);
+      return await to_base64(imageEng || filterImages[0].url);
 
     } catch (error) { }
     return null;
