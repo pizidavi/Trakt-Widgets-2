@@ -1,32 +1,32 @@
 {
-    "HOME_PAGE": "Hemsida",
-  
-    "MOVIE": {
-      "one": "film",
-      "other": "filmer"
-    },
-    "EPISODE": {
-      "one": "avsnitt",
-      "other": "avsnitt"
-    },
-    "PRIVATE": "privat",
-    "VIP": "vip",
-    "LAST_WATCHED": "såg senast",
-    "IS_WATCHING": "tittar på",
-  
-    "view.NO_IMAGE": "Ingen bild",
-    "view.PREVIEW": "Förhandsvisning",
-  
-    "date.D": "D",
-    "date.H": "T",
-    "date.M": "M",
-  
-    "error.LANGUAGE_NOT_FOUND": "Språk ej funnen",
-    "error.LAYOUT_NOT_FOUND": "Layout ej funnen",
-    "error.VIEW_NOT_FOUND": "Vy ej funnen",
-    "error.VIEW_NOT_COMPATIBLE": "\"%s\" layout fungerar endast med \"%s\" vy",
-    "error.PAGE_NOT_FOUND": "Sida ej funnen",
-    "error.UNEXPECTED_ERROR": "Oväntat fel",
-    "error.INTERNAL_ERROR": "Internt Fel",
-    "error.ERROR": "Fel"
-  }
+  "HOME_PAGE": "Hemsida",
+
+  "MOVIE": {
+    "one": "film",
+    "other": "filmer"
+  },
+  "EPISODE": {
+    "one": "avsnitt",
+    "other": "avsnitt"
+  },
+  "PRIVATE": "privat",
+  "VIP": "vip",
+  "LAST_WATCHED": "såg senast",
+  "IS_WATCHING": "tittar på",
+
+  "view.NO_IMAGE": "Ingen bild",
+  "view.PREVIEW": "Förhandsvisning",
+
+  "date.D": "D",
+  "date.H": "T",
+  "date.M": "M",
+
+  "error.LANGUAGE_NOT_FOUND": "Språk ej funnen",
+  "error.LAYOUT_NOT_FOUND": "Layout ej funnen",
+  "error.VIEW_NOT_FOUND": "Vy ej funnen",
+  "error.VIEW_NOT_COMPATIBLE": "\"%s\" layout fungerar endast med \"%s\" vy",
+  "error.PAGE_NOT_FOUND": "Sida ej funnen",
+  "error.UNEXPECTED_ERROR": "Oväntat fel",
+  "error.INTERNAL_ERROR": "Internt Fel",
+  "error.ERROR": "Fel"
+}
