@@ -42,6 +42,7 @@ Possible values: `poster` - `card` - `banner` - `fanart` - `text`
 | :---: | :--- |
 | `en` | English 🇬🇧 |
 | `it` | Italian 🇮🇹 |
+| `sv` | Swedish 🇸🇪 |
 
 
 ## Examples
