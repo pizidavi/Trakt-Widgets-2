@@ -41,6 +41,7 @@ Possible values: `poster` - `card` - `banner` - `fanart` - `text`
 | Code | Language |
 | :---: | :--- |
 | `en` | English 🇬🇧 |
+| `fr` | French 🇫🇷  |
 | `it` | Italian 🇮🇹 |
 | `sv` | Swedish 🇸🇪 |
 

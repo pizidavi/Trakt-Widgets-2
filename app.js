@@ -17,7 +17,7 @@ const env = nunjucks.configure(path.resolve(__dirname, 'views'), {
 });
 
 i18n.configure({
-  locales: ['en', 'it', 'sv'],
+  locales: ['en', 'fr', 'it', 'sv'],
   localePath: path.resolve('./locales'),
   defaultLocale: 'en',
   retryInDefaultLocale: true,
