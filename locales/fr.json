@@ -1,0 +1,32 @@
+{
+  "HOME_PAGE": "Page d'accueil",
+
+  "MOVIE": {
+    "one": "film",
+    "other": "films"
+  },
+  "EPISODE": {
+    "one": "épisode",
+    "other": "épisodes"
+  },
+  "PRIVATE": "privé",
+  "VIP": "vip",
+  "LAST_WATCHED": "a regardé pour la dernière fois",
+  "IS_WATCHING": "est en train de regarder",
+
+  "view.NO_IMAGE": "Pas d'image",
+  "view.PREVIEW": "Aperçu",
+
+  "date.D": "J",
+  "date.H": "H",
+  "date.M": "M",
+
+  "error.LANGUAGE_NOT_FOUND": "Langue introuvable",
+  "error.LAYOUT_NOT_FOUND": "Mise en page introuvable",
+  "error.VIEW_NOT_FOUND": "Vue introuvable",
+  "error.VIEW_NOT_COMPATIBLE": "\"%s\" la mise en page ne fonctionne qu'avec \"%s\" view",
+  "error.PAGE_NOT_FOUND": "Page introuvable",
+  "error.UNEXPECTED_ERROR": "Erreur inattendue",
+  "error.INTERNAL_ERROR": "Erreur interne",
+  "error.ERROR": "Erreur"
+}
