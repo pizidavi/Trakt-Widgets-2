@@ -2,12 +2,20 @@ const Tmdb = new (require('tmdbapi'))({
   apiv3: process.env.TMDB
 });
 const Fanart = new(require('fanart.tv'))(process.env.FANART);
-const base64 = require('node-base64-image');
 
 const tmdbBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
-const to_base64 = async (uri) => {
-  return 'data:image/;base64,' + await base64.encode(uri, { string: true });
+const to_base64 = async (url) => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.arrayBuffer();
+    const contentType = response.headers.get('content-type');
+    
+    return `data:${contentType};base64,${Buffer.from(blob).toString('base64')}`;
+  } catch (e) {
+    console.log('Error download image');
+  }
+  return null;
 };
 
 const get = async (view, options) => {
@@ -32,13 +40,15 @@ const get = async (view, options) => {
     }
     return await to_base64(tmdbBaseUrl + (imageEng || filterImages[0].file_path));
   }
-  else if (view === 'fanart' || view === 'banner') { // fanart
+  else if (view === 'fanart' || view === 'fanart-overlay' || view === 'banner') { // fanart
     const type = options.type == 'show' ? 'tv' : 'movie';
 
     try {
       const images = await Fanart[`${options.type}s`].get(options.tvdb_id || options.imdb_id);
 
-      const filterImages = images[view === 'fanart' ? `${options.type}background` : `${type}banner`];
+      const filterImages = images[
+        view === 'fanart' || view === 'fanart-overlay' ? `${options.type}background` : `${type}banner`
+      ];
       if (!filterImages.length)
         return null;
 
