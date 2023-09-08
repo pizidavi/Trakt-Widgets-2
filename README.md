@@ -32,7 +32,7 @@ Possible values: `profile` - `watched` - `watching`
 
 ### Views
 
-Possible values: `poster` - `card` - `banner` - `fanart` - `text`  
+Possible values: `poster` - `card` - `banner` - `fanart` - `fanart-overlay` - `text`  
 
 **IMPORTANT NOTE** `profile` layout works **only** with `poster` view  
 
@@ -71,6 +71,12 @@ Possible values: `poster` - `card` - `banner` - `fanart` - `text`
 | Watched | Watching |
 | :---: | :---: |
 | ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/fanart) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/fanart) |
+
+### FanArt Overlay
+
+| Watched | Watching |
+| :---: | :---: |
+| ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/fanart-overlay) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/fanart-overlay) |
 
 ### Text
 

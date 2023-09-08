@@ -81,6 +81,16 @@ const profile = async (req, next, view, language) => {
 const watched = async (req, next, view, language) => {
   const { slug } = req.params;
 
+  let profile_image = null;
+  if (view === 'fanart-overlay') {
+    profile_image = await trakt.users.profile({
+      username: slug,
+      extended: 'full'
+    }).then((response) => {
+      return Image.to_base64(response.images.avatar.full);
+    });
+  }
+
   return await trakt.users.history({
     username: slug
   }).then(async (response) => {
@@ -88,7 +98,8 @@ const watched = async (req, next, view, language) => {
       return {
         'username': slug,
         'element': null,
-        'image': null
+        'image': null,
+        'profile_image': profile_image
       };
 
     const element = response[0];
@@ -97,7 +108,7 @@ const watched = async (req, next, view, language) => {
 
     const data = {
       'type': type,
-      'title': element[type].title,
+      'title': element[type].title.substring(0, view === 'poster' ? 23 : 45),
       'year': element[type].year
     };
     if (type == 'show') {
@@ -106,7 +117,7 @@ const watched = async (req, next, view, language) => {
     }
 
     let image = null;
-    if (view != 'text')
+    if (view !== 'text')
       image = await Image.get(view, {
         tmdb_id: tmdb,
         imdb_id: imdb,
@@ -118,7 +129,8 @@ const watched = async (req, next, view, language) => {
     return {
       'username': slug,
       'element': data,
-      'image': image
+      'image': image,
+      'profile_image': profile_image
     };
   }).catch((err) => {
     if (err.message.includes('401'))
@@ -130,6 +142,16 @@ const watched = async (req, next, view, language) => {
 const watching = async (req, next, view, language) => {
   const { slug } = req.params;
 
+  let profile_image = null;
+  if (view === 'fanart-overlay') {
+    profile_image = await trakt.users.profile({
+      username: slug,
+      extended: 'full'
+    }).then((response) => {
+      return Image.to_base64(response.images.avatar.full);
+    });
+  }
+
   return await trakt.users.watching({
     username: slug
   }).then(async (response) => {
@@ -137,7 +159,8 @@ const watching = async (req, next, view, language) => {
       return {
         'username': slug,
         'element': null,
-        'image': null
+        'image': null,
+        'profile_image': profile_image
       };
 
     const element = response;
@@ -146,7 +169,7 @@ const watching = async (req, next, view, language) => {
 
     const data = {
       'type': type,
-      'title': element[type].title,
+      'title': element[type].title.substring(0, view === 'poster' ? 23 : 45),
       'year': element[type].year
     };
     if (type == 'show') {
@@ -167,7 +190,8 @@ const watching = async (req, next, view, language) => {
     return {
       'username': slug,
       'element': data,
-      'image': image
+      'image': image,
+      'profile_image': profile_image
     };
   }).catch((err) => {
     if (err.message.includes('401'))
