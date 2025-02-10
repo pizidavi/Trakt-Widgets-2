@@ -1,6 +1,6 @@
 
 {% if data.element.type == "show" %}
-  {{ data.element.title }}<tspan dx="7" style="font:600 22px monospace;fill:white;">{{ data.element.season }}x{{ data.element.episode }}</tspan>
+  {{ data.element.title }}<tspan dx="7" style="font:600 22px monospace;fill:white;">{{ data.element.season }}x{{ data.element.episode }} - {{ data.element.episode_title }}</tspan>
 {% elif data.element.type == "movie" %}
   {{ data.element.title }}<tspan dx="7">{{ data.element.year }}</tspan>
 {% endif %}
