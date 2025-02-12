@@ -114,7 +114,7 @@ const watched = async (req, next, view, language) => {
     if (type == 'show') {
       data['season'] = element.episode.season;
       data['episode'] = element.episode.number;
-      data['episode_title'] = element.episode.title || "Unknown Episode";
+      data['episode_title'] = element.episode.title;
     }
 
     let image = null;
@@ -176,7 +176,7 @@ const watching = async (req, next, view, language) => {
     if (type == 'show') {
       data['season'] = element.episode.season;
       data['episode'] = element.episode.number;
-      data['episode_title'] = element.episode.title || "Unknown Episode";
+      data['episode_title'] = element.episode.title;
     }
 
     let image = null;
