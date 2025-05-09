@@ -5,7 +5,7 @@ const controller = require('../controllers/controller');
 const router = express.Router();
 
 const layouts = [ 'profile', 'watched', 'watching' ];
-const views = [ 'poster', 'card', 'banner', 'fanart', 'fanart-overlay', 'text' ];
+const views = [ 'poster', 'card', 'card-overlay', 'banner', 'fanart', 'fanart-overlay', 'text' ];
 
 
 router.get('/', (req, res) => {

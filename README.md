@@ -60,6 +60,12 @@ Possible values: `poster` - `card` - `banner` - `fanart` - `fanart-overlay` - `t
 | :---: | :---: |
 | ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/card) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/card) |
 
+### Card Overlay
+
+| Watched | Watching |
+| :---: | :---: |
+| ![watched](https://trakt-widgets.vercel.app/pizidavi/watched/card-overlay) | ![watching](https://trakt-widgets.vercel.app/pizidavi/watching/card-overlay) |
+
 ### Banner
 
 | Watched | Watching |
