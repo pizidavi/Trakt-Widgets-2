@@ -32,7 +32,7 @@ Possible values: `profile` - `watched` - `watching`
 
 ### Views
 
-Possible values: `poster` - `card` - `banner` - `fanart` - `fanart-overlay` - `text`  
+Possible values: `poster` - `card` - `card-overlay` - `banner` - `fanart` - `fanart-overlay` - `text`  
 
 **IMPORTANT NOTE** `profile` layout works **only** with `poster` view  
 
