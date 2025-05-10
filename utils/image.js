@@ -19,7 +19,7 @@ const to_base64 = async (url) => {
 };
 
 const get = async (view, options) => {
-  if (view === 'poster' || view === 'card') { // tmdb
+  if (view === 'poster' || view === 'card' || view === 'card-overlay') { // tmdb
     const type = options.type == 'show' ? 'tv' : options.type;
     const images = await Tmdb[type].images({
       movie_id: options.tmdb_id,

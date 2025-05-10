@@ -82,7 +82,7 @@ const watched = async (req, next, view, language) => {
   const { slug } = req.params;
 
   let profile_image = null;
-  if (view === 'fanart-overlay') {
+  if (view === 'fanart-overlay' || view === 'card-overlay') {
     profile_image = await trakt.users.profile({
       username: slug,
       extended: 'full'
@@ -144,7 +144,7 @@ const watching = async (req, next, view, language) => {
   const { slug } = req.params;
 
   let profile_image = null;
-  if (view === 'fanart-overlay') {
+  if (view === 'fanart-overlay' || view === 'card-overlay') {
     profile_image = await trakt.users.profile({
       username: slug,
       extended: 'full'
